@@ -1,0 +1,329 @@
+
+/* 背景图外侧导航 */
+.outer-nav {
+    padding-left: 5%;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-tabs {
+    display: flex;
+    list-style: none;
+    padding: 0 30px;
+    margin: 0;
+}
+
+.tab-item {
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.tab-item.active,
+.tab-item:hover {
+    color: #1db954; 
+}
+
+/* 操作按钮区域 */
+.actions-bar {
+    padding: 20px 30px;
+    background-color: white;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-left:5%;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+}
+
+.primary-btn {
+    background-color: #1db954;
+    color: white;
+}
+
+.primary-btn:hover {
+    background-color: #18a04a;
+}
+
+.secondary-btn {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.secondary-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.icon {
+    font-size: 16px;
+}
+
+/* 歌曲列表表头 */
+.songs-header {
+    display: grid;
+    margin-left:6.5%;
+    margin-right:6.5%;
+    grid-template-columns: 3fr 2fr 1fr 1fr; /* 调整列宽，给歌曲名更多空间 */
+    padding: 15px 30px;
+    background-color: #f8f8f8;
+    font-weight: 600;
+    color: #666;
+    border-bottom: 1px solid #eee;
+}
+
+.header-item {
+    padding: 0 10px;
+    white-space: nowrap; /* 防止文字换行 */
+}
+
+.duration-col {
+    text-align: right;
+    padding-right: 30px;
+}
+
+/* 歌曲列表 */
+.songs-list {
+    background-color: white;
+    margin-left:6.5%;
+    margin-right:6.5%;
+}
+
+.song-item {
+    display: grid;
+    grid-template-columns: 30px 3fr 2fr 1fr 1fr; /* 调整列宽，与表头保持一致 */
+    padding: 12px 30px 12px 10px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.3s ease;
+    align-items: center;
+}
+
+.song-item:hover {
+    background-color: #f8f9fa;
+}
+
+.song-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.song-index {
+    width: 24px;
+    text-align: left;
+    color: #999;
+    font-size: 14px;
+}
+
+.song-name {
+    font-weight: 500;
+    color: #333;
+    white-space: nowrap; /* 防止文字换行 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 歌手区域容器 */
+.song-artist-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* 操作按钮组 */
+.song-action-buttons {
+    position: absolute;
+    left: 0;
+    display: flex;
+    gap: 8px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.2s ease;
+    pointer-events: none;
+    background-color: white;
+    padding-right: 10px;
+}
+
+.song-item:hover .song-action-buttons {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+/* 单个操作按钮 */
+.action-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    opacity: 0.8;
+}
+
+.action-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.play-btn {
+    background-color: #1db954;
+    color: white;
+}
+
+.add-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* 歌手名 */
+.song-artist {
+    color: #666;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.song-album {
+    color: #666;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.song-duration {
+    color: #999;
+    font-size: 14px;
+    text-align: right;
+    padding-right: 30px;
+    white-space: nowrap; /* 防止文字换行 */
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .user-banner {
+        height: 250px;
+    }
+
+    .user-avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .username {
+        font-size: 20px;
+    }
+
+    .user-stats {
+        gap: 15px;
+        font-size: 14px;
+    }
+
+    .nav-list,
+    .nav-tabs {
+        padding: 0 15px;
+        overflow-x: auto;
+    }
+
+    .nav-item,
+    .tab-item {
+        padding: 12px 15px;
+        white-space: nowrap;
+    }
+
+    .actions-bar {
+        padding: 15px;
+    }
+
+    .action-buttons {
+        flex-wrap: wrap;
+    }
+
+    .songs-header,
+    .song-item {
+        grid-template-columns: 60px 1fr 120px 100px 80px;
+        padding: 10px 15px;
+    }
+
+    .song-album {
+        display: none;
+    }
+
+    .songs-header {
+        grid-template-columns: 40px 1fr 120px 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .user-banner {
+        height: 200px;
+    }
+
+    .user-avatar {
+        width: 80px;
+        height: 80px;
+    }
+
+    .username {
+        font-size: 18px;
+    }
+
+    .user-stats {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .action-buttons {
+        gap: 10px;
+    }
+
+    .btn {
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+
+    .songs-header,
+    .song-item {
+        grid-template-columns: 30px 1fr 80px;
+    }
+
+    .song-artist,
+    .song-album {
+        display: none;
+    }
+
+    .songs-header {
+        grid-template-columns: 30px 1fr 80px;
+    }
+
+    .song-duration {
+        padding-right: 15px;
+    }
+}

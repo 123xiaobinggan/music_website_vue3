@@ -7,146 +7,113 @@
         <button class="close-button" @click="closeModal">&times;</button>
       </div>
       <div class="modal-body">
-        <form @submit.prevent="handleLogin">
-          <div class="form-group">
-            <label for="username">ID</label>
-            <input
-              type="text"
-              id="accountId"
-              v-model="userForm.accountId"
-              required
-              placeholder="请输入ID"
-            />
-          </div>
-          <div class="form-group">
-            <label for="password">密码</label>
-            <input
-              type="password"
-              id="password"
-              v-model="userForm.password"
-              required
-              placeholder="请输入密码"
-            />
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="login-button" @click="handleLogin">
-              登录
-            </button>
-            <button class="register-button" @click="go_register">去注册</button>
-            <button type="button" class="cancel-button" @click="closeModal">
-              取消
-            </button>
-          </div>
-        </form>
+        <div class="form-group">
+          <label for="accountId">ID</label>
+          <input
+            type="text"
+            id="accountId"
+            v-model="userForm.accountId"
+            required
+            placeholder="请输入ID"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">密码</label>
+          <input
+            type="password"
+            id="password"
+            v-model="userForm.password"
+            required
+            placeholder="请输入密码"
+          />
+        </div>
+        <div class="form-actions">
+          <button class="login-button" @click="handleLogin">登录</button>
+          <button class="register-button" @click="go_register">去注册</button>
+          <button type="button" class="cancel-button" @click="closeModal">
+            取消
+          </button>
+        </div>
       </div>
     </div>
+
     <div v-if="registerModal" class="modal-container" @click.stop>
       <div class="modal-header">
         <h3>用户注册</h3>
         <button class="close-button" @click="closeModal">&times;</button>
       </div>
       <div class="modal-body">
-        <form @submit.prevent="handleLogin">
-          <!-- 修改开始：为每个输入框创建独立的 form-group -->
-          <div class="form-group">
-            <label for="accountId" class="form-label">ID</label>
-            <input
-              type="text"
-              id="accountId"
-              v-model="userForm.accountId"
-              required
-              placeholder="请输入ID"
-            />
-          </div>
-          <div class="form-group">
-            <label for="username" class="form-label">用户名</label>
-            <input
-              type="text"
-              id="username"
-              v-model="userForm.username"
-              required
-              placeholder="请输入用户名"
-            />
-          </div>
-          <div class="form-group">
-            <label for="password">密码</label>
-            <input
-              type="password"
-              id="password"
-              v-model="userForm.password"
-              required
-              placeholder="请输入密码"
-            />
-          </div>
-          <div class="form-group">
-            <label for="confirmPassword">确认密码</label>
-            <input
-              type="confirmPassword"
-              id="confirmPassword"
-              v-model="userForm.confirmPassword"
-              required
-              placeholder="请确认密码"
-            />
-          </div>
-          <div class="form-actions">
-            <button
-              type="submit"
-              v-if="loginModal"
-              class="login-button"
-              @click="handleLogin"
-            >
-              登录
-            </button>
-            <button
-              type="submit"
-              v-if="registerModal"
-              class="login-button"
-              @click="go_login"
-            >
-              去登录
-            </button>
-            <button
-              v-if="loginModal"
-              class="register-button"
-              @click="go_register"
-            >
-              去注册
-            </button>
-            <button
-              v-if="registerModal"
-              class="register-button"
-              @click="handleRegister"
-            >
-              注册
-            </button>
-            <button type="button" class="cancel-button" @click="closeModal">
-              取消
-            </button>
-          </div>
-        </form>
+        <div class="form-group">
+          <label for="regAccountId">ID</label>
+          <input
+            type="text"
+            id="regAccountId"
+            v-model="userForm.accountId"
+            required
+            placeholder="请输入ID"
+          />
+        </div>
+        <div class="form-group">
+          <label for="username">用户名</label>
+          <input
+            type="text"
+            id="username"
+            v-model="userForm.username"
+            required
+            placeholder="请输入用户名"
+          />
+        </div>
+        <div class="form-group">
+          <label for="regPassword">密码</label>
+          <input
+            type="password"
+            id="regPassword"
+            v-model="userForm.password"
+            required
+            placeholder="请输入密码"
+          />
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">确认密码</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            v-model="userForm.confirmPassword"
+            required
+            placeholder="请确认密码"
+          />
+        </div>
+        <div class="form-actions">
+          <button class="register-button" @click="handleRegister">注册</button>
+          <button class="login-button" @click="go_login">去登录</button>
+          <button type="button" class="cancel-button" @click="closeModal">
+            取消
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
+
 <script setup>
-import { ref, reactive,defineEmits,defineProps } from "vue";
+import { ref, reactive, defineEmits, defineProps } from "vue";
 import { useUserStore } from "../store/user.js";
 defineProps({
   visible: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
 const userStore = useUserStore();
-const emit = defineEmits(["hideLogin_RegisterModal","login_success"]);
+const emit = defineEmits(["hideLogin_RegisterModal", "success"]);
 
 let userForm = reactive({
   accountId: "",
   username: "",
   password: "",
-  confirmPassword: ""
+  confirmPassword: "",
 });
 
 var loginModal = ref(true);
@@ -166,27 +133,44 @@ function go_login() {
   registerModal.value = false;
 }
 
-function handleRegister() {
+async function handleRegister() {
   console.log("注册信息:", userForm);
-  userStore.register("handleRegister", userForm);
+  if(userForm.password !== userForm.confirmPassword){
+    alert("两次输入的密码不一致");
+    return;
+  }
+  if(userForm.accountId === "" || userForm.username === "" || userForm.password === ""){
+    alert("请填写完整的注册信息");
+    return;
+  }
+  const res = await userStore.register(userForm.accountId, userForm.username, userForm.password);
+  console.log(res);
+  if(res.code === 0){
+    success();
+  }else{
+    alert(res.msg);
+  }
 }
 
-
-function handleLogin() {
-  userStore.login("handleLogin", userForm);
-  // 这里可以添加登录逻辑
-  console.log("登录信息:", userForm);
-  login_success();
-  // 登录成功后关闭弹窗
-  closeModal();
+async function handleLogin() {
+  console.log("click login");
+  if(userForm.accountId === "" || userForm.password === ""){
+    alert("请填写完整的登录信息");
+    return;
+  }
+  const res = await userStore.login(userForm.accountId, userForm.password);
+  if(res.code === 0){
+    success();
+  }else{
+    alert(res.msg);
+  }
+  
 }
 
-function login_success() {
-  emit("login_success");
-  // 登录成功后，关闭登录注册模态框
-  closeModal();
+function success() {
+  emit("success");
+  
 }
-
 </script>
 
 <style scoped>
@@ -308,6 +292,4 @@ function login_success() {
 .cancel-button:hover {
   background-color: #e0e0e0;
 }
-
-
 </style>

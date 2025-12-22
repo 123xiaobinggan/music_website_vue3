@@ -29,10 +29,13 @@
                     <i class="fas fa-play-circle"></i>
                   </div>
                 </div>
+
                 <div class="playlist-info">
                   <h3 class="playlist-title">{{ playlist.title }}</h3>
+                  <br />
                   <p class="playlist-desc">{{ playlist.description }}</p>
                 </div>
+                
               </div>
             </div>
           </div>
@@ -56,7 +59,6 @@
     <div class="section">
       <h2 class="section-title">新歌首发</h2>
       <div class="carousel-container">
-        
         <button class="carousel-btn prev" @click="prevNewSongPage">
           <i class="fas fa-chevron-left"></i>
         </button>
@@ -90,7 +92,7 @@
             </div>
           </div>
         </div>
-        
+
         <button class="carousel-btn next" @click="nextNewSongPage">
           <i class="fas fa-chevron-right"></i>
         </button>

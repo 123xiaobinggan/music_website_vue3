@@ -15,6 +15,9 @@ import MyPlayListPage from '@/pages/MyMusics/MyPlayList/Index.vue'
 import FollowingPage from '@/pages/MyMusics/Following/Index.vue'
 import FollowersPage from '@/pages/MyMusics/Followers/Index.vue'
 
+import MyPlayListAllPage from '@/pages/MyMusics/MyPlayList/PlayList/Index.vue'
+import MyPlayListDetailPage from '@/pages/MyMusics/MyPlayList/PlayListDetail/Index.vue'
+
 const routes = [
   {
     path: '/',
@@ -33,7 +36,13 @@ const routes = [
         path: 'myMusics', component: MyMusicsPage,
         children: [
           { path: '', component: ILikePage },
-          { path: 'myPlayList', component: MyPlayListPage },
+          {
+            path: 'myPlayList', component: MyPlayListPage,
+            children: [
+              { path: '', component: MyPlayListAllPage },
+              { path: 'detail/:id', name: 'detail', component: MyPlayListDetailPage },
+            ]
+          },
           { path: 'following', component: FollowingPage },
           { path: 'followers', component: FollowersPage }
         ]

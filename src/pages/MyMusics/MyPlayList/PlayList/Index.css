@@ -1,0 +1,299 @@
+.playlists-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    margin-bottom: 30px;
+}
+
+.create-playlist-btn {
+    background-color: #1db954;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s;
+}
+
+.create-playlist-btn:hover {
+    background-color: #1aa34a;
+}
+
+.playlists-list {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.playlists-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.playlists-table thead {
+    background-color: #f8f9fa;
+}
+
+.playlists-table th {
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 1px solid #eee;
+}
+
+.playlist-name-header {
+    width: 90%;
+}
+
+.track-count-header {
+    width: 10%;
+}
+
+.playlists-table tbody tr {
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.playlists-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.playlist-row td {
+    padding: 16px 20px;
+}
+
+.playlist-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+}
+
+.playlist-cover {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.playlist-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    flex-shrink: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 修改相关CSS样式 */
+.track-count {
+    text-align: center;
+}
+
+.track-count-content {
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    gap: 10px;
+}
+
+.play-button {
+    background-color: #1db954;
+    color: white;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    flex-shrink: 0;
+    margin-left: auto;
+    /* 将按钮推到右侧 */
+}
+
+.play-button:hover {
+    background-color: #1aa34a;
+}
+
+.count-text {
+    font-size: 14px;
+    color: #666;
+
+}
+
+/* 模态框样式 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    width: 500px;
+    max-width: 90%;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #333;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #999;
+}
+
+.close-button:hover {
+    color: #333;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #1db954;
+    box-shadow: 0 0 0 2px rgba(29, 185, 84, 0.2);
+}
+
+.cover-upload {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.cover-preview {
+    width: 80px;
+    height: 80px;
+    border-radius: 4px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+}
+
+.upload-button {
+    padding: 8px 16px;
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.upload-button:hover {
+    background-color: #e0e0e0;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.cancel-button,
+.confirm-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.cancel-button {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.cancel-button:hover {
+    background-color: #e0e0e0;
+}
+
+.confirm-button {
+    background-color: #1db954;
+    color: white;
+}
+
+.confirm-button:hover {
+    background-color: #1aa34a;
+}
+
+@media (max-width: 768px) {
+    .playlists-container {
+        padding: 15px;
+    }
+
+    .playlists-table th,
+    .playlists-table td {
+        padding: 12px 15px;
+    }
+
+    .playlist-info {
+        gap: 10px;
+    }
+
+    .playlist-cover {
+        width: 40px;
+        height: 40px;
+    }
+
+    .playlist-title {
+        font-size: 14px;
+    }
+}
