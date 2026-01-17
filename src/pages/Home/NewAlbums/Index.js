@@ -31,12 +31,12 @@ export default function useNewAlbums() {
         // 港台专辑
         { id: 9, region: 'hktw', cover: 'https://picsum.photos/200/200?random=9', title: '七里香', artist: '周杰伦', releaseDate: '2023-10-05' },
         { id: 10, region: 'hktw', cover: 'https://picsum.photos/200/200?random=10', title: '祝福', artist: '张学友', releaseDate: '2023-09-28' },
-{ id: 11, region: 'hktw', cover: 'https://picsum.photos/200/200?random=11', title: '真情流露', artist: '张学友', releaseDate: '2023-08-15' },
-{ id: 12, region: 'hktw', cover: 'https://picsum.photos/200/200?random=12', title: '忘记你我做不到', artist: '张学友', releaseDate: '2023-07-21' },
-{ id: 13, region: 'hktw', cover: 'https://picsum.photos/200/200?random=13', title: '只想一生跟你走', artist: '张学友', releaseDate: '2023-06-08' },
-{ id: 14, region: 'hktw', cover: 'https://picsum.photos/200/200?random=14', title: '爱不完', artist: '刘德华', releaseDate: '2023-05-12' },
-{ id: 15, region: 'hktw', cover: 'https://picsum.photos/200/200?random=15', title: '忘情水', artist: '刘德华', releaseDate: '2023-04-19' },
-{ id: 16, region: 'hktw', cover: 'https://picsum.photos/200/200?random=16', title: '中国人', artist: '刘德华', releaseDate: '2023-03-25' },
+        { id: 11, region: 'hktw', cover: 'https://picsum.photos/200/200?random=11', title: '真情流露', artist: '张学友', releaseDate: '2023-08-15' },
+        { id: 12, region: 'hktw', cover: 'https://picsum.photos/200/200?random=12', title: '忘记你我做不到', artist: '张学友', releaseDate: '2023-07-21' },
+        { id: 13, region: 'hktw', cover: 'https://picsum.photos/200/200?random=13', title: '只想一生跟你走', artist: '张学友', releaseDate: '2023-06-08' },
+        { id: 14, region: 'hktw', cover: 'https://picsum.photos/200/200?random=14', title: '爱不完', artist: '刘德华', releaseDate: '2023-05-12' },
+        { id: 15, region: 'hktw', cover: 'https://picsum.photos/200/200?random=15', title: '忘情水', artist: '刘德华', releaseDate: '2023-04-19' },
+        { id: 16, region: 'hktw', cover: 'https://picsum.photos/200/200?random=16', title: '中国人', artist: '刘德华', releaseDate: '2023-03-25' },
 
         // 欧美专辑
         { id: 17, region: 'europe', cover: 'https://picsum.photos/200/200?random=17', title: 'Divide', artist: 'Ed Sheeran', releaseDate: '2023-10-12' },

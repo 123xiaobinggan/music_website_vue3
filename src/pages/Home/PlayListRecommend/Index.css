@@ -1,5 +1,6 @@
 .playlist-recommend {
   padding: 20px;
+  padding-bottom: 50px;
 
   .section {
     margin-bottom: 40px;
@@ -74,6 +75,7 @@
               overflow: hidden;
               width: 100%;
               height: auto;
+              
 
               img {
                 width: 100%;
@@ -128,13 +130,14 @@
                 margin-top: 15px;
                 margin-bottom: 0px;
                 overflow: hidden;
+                white-space: nowrap;
+                max-width: 120px;
                 text-overflow: ellipsis;
                 justify-content: center;
                 align-items: center;
               }
 
-              .playlist-desc,
-              .song-artist {
+              .playlist-desc {
                 font-size: 14px;
                 color: #666;
                 margin-top: -15px;
@@ -142,6 +145,12 @@
                 text-overflow: ellipsis;
                 justify-content: center;
                 align-items: center;
+              }
+
+              .song-artist {
+                font-size: 14px;
+                color: #666;
+                margin-top: 0px;
               }
             }
           }

@@ -4,46 +4,40 @@
     <div class="loading-container" @click.stop>
       <div class="spinner"></div>
       <p v-if="message" class="loading-message">{{ message }}</p>
-      <button 
-        v-if="closable" 
-        class="close-button" 
-        @click="close"
-      >
-        ×
-      </button>
+      <button v-if="closable" class="close-button" @click="close">×</button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { defineProps, defineEmits,defineOptions } from 'vue';
+import { defineProps, defineEmits, defineOptions } from "vue";
 defineOptions({
-  name: 'Loading'
-})
+  name: "Loading",
+});
 
 const props = defineProps({
   visible: {
     type: Boolean,
-    default: false
+    default: false,
   },
   message: {
     type: String,
-    default: '加载中...'
+    default: "加载中...",
   },
   closable: {
     type: Boolean,
-    default: false
+    default: false,
   },
   closeOnClickOutside: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
-const emit = defineEmits(['close']);
+const emit = defineEmits(["close"]);
 
 function close() {
-  emit('close');
+  emit("close");
 }
 
 function handleOverlayClick() {
@@ -64,7 +58,7 @@ function handleOverlayClick() {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: 10001;
 }
 
 .loading-container {
@@ -89,8 +83,12 @@ function handleOverlayClick() {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loading-message {

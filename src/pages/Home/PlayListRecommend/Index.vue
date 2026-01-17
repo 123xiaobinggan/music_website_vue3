@@ -23,8 +23,8 @@
                 :key="index"
                 class="playlist-item"
               >
-                <div class="playlist-cover">
-                  <img :src="playlist.cover" :alt="playlist.title" />
+                <div class="playlist-cover" @click="playPlayList(playlist)">
+                  <img :src="playlist.coverUrl" :alt="playlist.title" />
                   <div class="play-overlay">
                     <i class="fas fa-play-circle"></i>
                   </div>
@@ -74,19 +74,19 @@
               class="carousel-page"
             >
               <div
-                v-for="(playlist, index) in page"
+                v-for="(song, index) in page"
                 :key="index"
                 class="playlist-item"
               >
-                <div class="playlist-cover">
-                  <img :src="playlist.cover" :alt="playlist.title" />
+                <div class="song-cover" @click="playSong(song)">
+                  <img :src="song.coverUrl" :alt="song.title" />
                   <div class="play-overlay">
                     <i class="fas fa-play-circle"></i>
                   </div>
                 </div>
                 <div class="playlist-info">
-                  <h3 class="playlist-title">{{ playlist.title }}</h3>
-                  <p class="playlist-desc">{{ playlist.description }}</p>
+                  <h3 class="playlist-title">{{ song.title }}</h3>
+                  <p class="song-artist">{{ song.artist }}</p>
                 </div>
               </div>
             </div>
@@ -112,11 +112,11 @@
 
 
 <script setup>
-import { defineOptions } from "vue";
+import { defineOptions, onMounted } from "vue";
 defineOptions({
   name: "PlayListRecommendPage",
 });
-import usePlayListRecommend from "./Index.js";
+import usePlaylistRecommend from "./Index.js";
 let {
   playlists,
   newSongs,
@@ -130,7 +130,15 @@ let {
   nextNewSongPage,
   prevNewSongPage,
   goToNewSongPage,
-} = usePlayListRecommend();
+  playPlayList,
+  playSong,
+  initNewSongs,
+} = usePlaylistRecommend();
+
+onMounted(() => {
+  initNewSongs();
+})
+
 </script>
 
 <style lang="scss" scoped>

@@ -19,34 +19,44 @@
         </thead>
         <tbody>
           <tr
-            v-for="playlist in playlists"
-            :key="playlist.id"
+            v-for="playlist in userStore.user.playlists.filter((playlist) => playlist.name !== '我喜欢')"
+            :key="playlist.name"
             class="playlist-row"
-            @mouseenter="hoveredPlaylistId = playlist.id"
+            @mouseenter="hoveredPlaylistId = playlist.name"
             @mouseleave="hoveredPlaylistId = null"
-            @click="goToPlaylist(playlist.id)"
+            @click="goToPlaylist(playlist.name)"
           >
             <td class="playlist-name">
               <div class="playlist-info">
                 <img
-                  :src="playlist.cover || defaultCover"
+                  :src="playlist.coverUrl || defaultCover"
                   :alt="playlist.name"
                   class="playlist-cover"
                 />
                 <span class="playlist-title">{{ playlist.name }}</span>
-                <!-- 悬浮时在歌单名称列的最右侧显示播放按钮 -->
-                <button
-                  v-if="hoveredPlaylistId === playlist.id"
-                  class="play-button"
-                  @click.stop="playPlaylist(playlist.id)"
-                >
-                  <i class="fas fa-play"></i>
-                </button>
+                <div class="button-group">
+                  <!-- 悬浮时在歌单名称列的最右侧显示删除按钮 -->
+                  <button
+                    v-if="hoveredPlaylistId === playlist.name"
+                    class="delete-button"
+                    @click.stop="deletePlaylist(playlist.name)"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </button>
+                  <!-- 悬浮时在歌单名称列的最右侧显示播放按钮 -->
+                  <button
+                    v-if="hoveredPlaylistId === playlist.name"
+                    class="play-button"
+                    @click.stop="playPlaylist(playlist.name)"
+                  >
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
               </div>
             </td>
             <td class="track-count">
               <div class="track-count-content">
-                <span class="count-text">{{ playlist.trackCount }}</span>
+                <span class="count-text">{{ playlist.songs.length }}</span>
               </div>
             </td>
           </tr>
@@ -79,21 +89,27 @@
           <div class="form-group">
             <label>封面</label>
             <div class="cover-upload">
-              <img
-                :src="newPlaylist.coverPreview || defaultCover"
-                alt="封面预览"
-                class="cover-preview"
-              />
-              <input
-                type="file"
-                ref="coverInput"
-                accept="image/*"
-                @change="handleCoverChange"
-                style="display: none"
-              />
-              <button class="upload-button" @click="triggerCoverUpload">
-                上传封面
-              </button>
+              <div class="cover-preview-wrapper">
+                <img
+                  :src="newPlaylist.coverPreview || defaultCover"
+                  alt="封面预览"
+                  class="cover-preview"
+                />
+                <input
+                  type="file"
+                  ref="coverInput"
+                  accept="image/*"
+                  @change="handleCoverChange"
+                  style="display: none"
+                />
+                <button
+                  class="cover-overlay-button"
+                  @click="triggerCoverUpload"
+                >
+                  <i class="fas fa-edit"></i>
+                  选择封面
+                </button>
+              </div>
             </div>
           </div>
           <div class="form-actions">
@@ -104,30 +120,42 @@
       </div>
     </div>
   </div>
+
+  <MessageBox
+    :visible="messageBox.visible"
+    :message="messageBox.message"
+    @confirm="messageBox.confirmCallback"
+    @cancel="messageBox.cancelCallback"
+  />
 </template>
 
 <script setup>
-import { defineOptions } from "vue";
+import { defineOptions, onMounted } from "vue";
+import { useUserStore } from "../../../../store/user.js";
+import MessageBox from "../../../../components/MessageBox.vue";
 defineOptions({
-  name: "MyPlayListAllPage",
+  name: "MyPlaylistAllPage",
 });
-import useMyPlayList from "./Index.js";
+const userStore = useUserStore();
+import useMyPlaylist from "./Index.js";
 let {
-  playlists,
   hoveredPlaylistId,
   isCreateModalVisible,
   newPlaylist,
   coverInput,
+  messageBox,
   showCreateModal,
   hideCreateModal,
+  showMessage,
   triggerCoverUpload,
   handleCoverChange,
   createPlaylist,
   playPlaylist,
   goToPlaylist,
-} = useMyPlayList();
+  deletePlaylist,
+} = useMyPlaylist();
 </script>
 
 <style scoped>
-@import url('./Index.css')
+@import url("./Index.css");
 </style>

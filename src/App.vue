@@ -4,15 +4,18 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "App",
-  data() {
-    return {
-      isShowLogin_RegisterModal: false, // 控制登录注册模态框的显示隐藏
-    };
-  },
-};
+<script setup>
+import { onMounted } from "vue";
+import { usePlayerStore } from "./store/player.js";
+onMounted(() => {
+  const playerStore = usePlayerStore();
+  playerStore.initAudio();
+
+  if (usePlayerStore.currentSong) {
+    usePlayerStore.audio.src = usePlayerStore.currentSong.url;
+    usePlayerStore.audio.volume = usePlayerStore.volume;
+  }
+});
 </script>
 
 <style>

@@ -39,8 +39,8 @@
       </li>
     </ul>
     <div class="nav-search">
-      <input type="text" placeholder="搜索音乐、艺术家或专辑" />
-      <i class="fas fa-search search-icon"></i>
+      <input type="text" placeholder="搜索音乐、艺术家或专辑"  v-model="searchKeyword"  @keyup.enter="searchMusic" />
+      <i class="fas fa-search search-icon" @click="searchMusic"></i>
     </div>
 
     <!-- 用户头像区域 -->
@@ -50,7 +50,7 @@
         @mouseenter="showUserProfile"
         @mouseleave="hideUserProfile"
       >
-        <img :src="userStore.user.avatar + '?t' + userStore.avatarVersion" alt="用户头像" class="user-avatar" />
+        <img :src="userStore.user.avatar + '?v=' + Math.random()" alt="用户头像" class="user-avatar" />
         <!-- 用户信息悬浮框 -->
         <div v-show="isProfileVisible" class="user-profile-popup">
           <div class="profile-header">
@@ -113,14 +113,17 @@
 import { useUserStore } from "../store/user.js";
 import Login_Register from "./Login_Register.vue";
 import UserSettings  from "./UserSettings.vue";
+import { useRouter } from "vue-router";
 import { ref } from "vue";
 
+const router = useRouter();
 const userStore = useUserStore();
 
 let isLogin_RegisterModalVisible = ref(false);
 let isProfileVisible = ref(false);
 let isSettingsModalVisible = ref(false);
-let avatarVersion = ref(0);
+
+let searchKeyword = ref("");
 
 function showLogin_RegisterModal() {
   console.log("showLogin_RegisterModal", userStore.user);
@@ -134,6 +137,11 @@ function hideLogin_RegisterModal() {
 function success() {
   console.log("success", userStore.user);
   hideLogin_RegisterModal();
+}
+
+function searchMusic() {
+  console.log("searchMusic", searchKeyword.value);
+  router.push({ path: "/search/songs", query: { keyword: searchKeyword.value } })
 }
 
 // 显示用户信息面板
@@ -178,17 +186,20 @@ function handleSettingsUpdated() {
 .navbar {
   display: flex;
   align-items: center;
-  padding: 0rem 0rem 0rem 14%;
+  padding: 0rem 0rem 0rem 13%;
   background-color: #ffffff;
   color: black;
   border-bottom: 1px solid #ccc;
   position: relative;
+  z-index: 999;
 }
 
 .nav-brand {
   font-size: 2.5rem;
   font-weight: bold;
   text-decoration: none;
+  flex-wrap: nowrap;
+  white-space: nowrap;
   color: rgb(0, 0, 0);
 }
 
@@ -198,7 +209,7 @@ function handleSettingsUpdated() {
 }
 
 .logo {
-  width: 60px;
+  width: 80px;
   margin-right: 0.5rem;
 }
 
@@ -265,7 +276,7 @@ function handleSettingsUpdated() {
   top: 50%;
   transform: translateY(-50%);
   color: #666;
-  pointer-events: none;
+  cursor: pointer;
 }
 
 .nav-search input:focus + .search-icon {
@@ -275,13 +286,15 @@ function handleSettingsUpdated() {
 /* 用户头像样式 */
 .user-section {
   margin-left: 20px;
-  margin-top: 15px;
+  margin-top: 10px;
   position: relative;
 }
 
 .avatar-container {
   position: relative;
   cursor: pointer;
+  z-index: 1001;
+  display: block;
 }
 
 .user-avatar {
@@ -301,7 +314,7 @@ function handleSettingsUpdated() {
   background: white;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
+  z-index: 1002;
   padding: 16px;
   border: 1px solid #eee;
 }

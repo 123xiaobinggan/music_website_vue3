@@ -1,7 +1,8 @@
 <template>
   <div class="about-page">
     <h1 class="title">{{ title }}</h1>
-    <p v-for="i in member" :key="i">{{ i.name }}</p>
+    <h2 >by 小饼干</h2>
+    <p>QQ: 1398865656</p>
   </div>
 </template>
 

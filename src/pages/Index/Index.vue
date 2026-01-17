@@ -2,18 +2,19 @@
   <div class="index-page">
     <NaviGationBar />
     <router-view />
+    <MusicPlayer />
   </div>
 </template>
 
 
-<script>
+<script setup>
 import NaviGationBar from "../../components/NavigationBar.vue";
-export default {
+import MusicPlayer from "../../components/MusicPlayer.vue";
+import { defineOptions } from "vue";
+defineOptions({
   name: "IndexPage",
-  components: {
-    NaviGationBar,
-  },
-};
+});
+
 </script>
 
 <style lang="scss" scoped>
