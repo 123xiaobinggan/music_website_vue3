@@ -13,9 +13,9 @@
 - 歌单管理
 
 ## 网页展示
-(./screenshots/photo1.png)
-(./screenshots/photo2.png)
-(./screenshots/photo3.png)
+![](./screenshots/photo1.png)
+![](./screenshots/photo2.png)
+![](./screenshots/photo3.png)
 
 
 ## 网站地址
