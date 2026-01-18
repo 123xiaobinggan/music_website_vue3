@@ -15,7 +15,7 @@ import MyPlaylistPage from '@/pages/MyMusics/MyPlaylist/Index.vue'
 import FollowingPage from '@/pages/MyMusics/Following/Index.vue'
 import FollowersPage from '@/pages/MyMusics/Followers/Index.vue'
 
-import MyPlaylistAllPage from '@/pages/MyMusics/MyPlaylist/Playlist/Index.vue'
+import MyPlaylistAllPage from '@/pages/MyMusics/MyPlayList/Playlist/Index.vue'
 import MyPlaylistDetailPage from '@/pages/MyMusics/MyPlaylist/PlaylistDetail/Index.vue'
 
 import SearchPage from '@/pages/Search/Index.vue'
