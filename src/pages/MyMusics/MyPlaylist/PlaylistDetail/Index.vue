@@ -67,7 +67,7 @@
         </div>
 
         <div class="song-album">{{ song.album }}</div>
-        <div class="song-duration">{{ song.duration }}</div>
+        <div class="song-duration">{{ playerStore.formatDuration(song.duration) }}</div>
       </div>
     </div>
 
@@ -158,11 +158,13 @@
 <script setup>
 import { defineOptions, onMounted, watch, computed } from "vue";
 import { useUserStore } from "../../../../store/user.js";
+import { usePlayerStore } from "../../../../store/player.js";
 import MessageBox from "@/components/MessageBox.vue";
 defineOptions({
   name: "MyPlaylistDetailPage",
 });
 const userStore = useUserStore();
+const playerStore = usePlayerStore();
 import useMyPlaylistDetail from "./Index.js";
 let {
   isShowModal,

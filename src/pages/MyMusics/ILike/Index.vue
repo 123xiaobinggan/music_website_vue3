@@ -76,7 +76,7 @@
         </div>
 
         <div class="song-album">{{ song.album }}</div>
-        <div class="song-duration">{{ song.duration }}</div>
+        <div class="song-duration">{{ playerStore.formatDuration(song.duration) }}</div>
       </div>
     </div>
   </div>

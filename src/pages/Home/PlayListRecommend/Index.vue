@@ -23,7 +23,7 @@
                 :key="index"
                 class="playlist-item"
               >
-                <div class="playlist-cover" @click="playPlayList(playlist)">
+                <div class="playlist-cover" @click="playPlaylist(playlist)">
                   <img :src="playlist.coverUrl" :alt="playlist.title" />
                   <div class="play-overlay">
                     <i class="fas fa-play-circle"></i>
@@ -114,7 +114,7 @@
 <script setup>
 import { defineOptions, onMounted } from "vue";
 defineOptions({
-  name: "PlayListRecommendPage",
+  name: "PlaylistRecommendPage",
 });
 import usePlaylistRecommend from "./Index.js";
 let {
@@ -130,7 +130,7 @@ let {
   nextNewSongPage,
   prevNewSongPage,
   goToNewSongPage,
-  playPlayList,
+  playPlaylist,
   playSong,
   initNewSongs,
 } = usePlaylistRecommend();

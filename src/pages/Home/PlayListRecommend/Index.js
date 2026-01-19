@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue'
 import { usePlayerStore } from '../../../store/player.js'
 
-export default function usePlaylistRecommend() {
+export default function useplaylistRecommend() {
     const playerStore = usePlayerStore()
     // 模拟歌单数据
     const playlists = ref([
@@ -73,7 +73,7 @@ export default function usePlaylistRecommend() {
     const newSongCurrentPage = ref(0)
 
     // 歌单翻页功能下一页
-    const nextPlaylistPage = () => {
+    const nextplaylistPage = () => {
         if (playlistCurrentPage.value < playlistPages.value.length - 1) {
             playlistCurrentPage.value++
         } else {
@@ -82,7 +82,7 @@ export default function usePlaylistRecommend() {
     }
 
     // 歌单翻页功能上一页
-    const prevPlaylistPage = () => {
+    const prevplaylistPage = () => {
         if (playlistCurrentPage.value > 0) {
             playlistCurrentPage.value--
         } else {
@@ -90,7 +90,7 @@ export default function usePlaylistRecommend() {
         }
     }
 
-    const goToPlaylistPage = (index) => {
+    const goToplaylistPage = (index) => {
         playlistCurrentPage.value = index
     }
 
@@ -117,7 +117,7 @@ export default function usePlaylistRecommend() {
     }
 
 
-    const playPlayList = (playlist) => {
+    const playplaylist = (playlist) => {
 
     }
 
@@ -133,13 +133,13 @@ export default function usePlaylistRecommend() {
         newSongPages,
         playlistCurrentPage,
         newSongCurrentPage,
-        nextPlaylistPage,
-        prevPlaylistPage,
-        goToPlaylistPage,
+        nextplaylistPage,
+        prevplaylistPage,
+        goToplaylistPage,
         nextNewSongPage,
         prevNewSongPage,
         goToNewSongPage,
-        playPlayList,
+        playplaylist,
         playSong,
         initNewSongs
     }

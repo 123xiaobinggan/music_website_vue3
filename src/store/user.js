@@ -53,20 +53,6 @@ export const useUserStore = defineStore("user", {
       );
     },
 
-    async createplaylist(playlist) {
-      console.log('createplaylist', playlist)
-      this.user.playlist.push(playlist)
-      try {
-        const res = await axios.post(this.url + "/Create_playlist", { accountId: this.user.accountId, playlist: playlist })
-        if (res.status != 200) {
-          console.log(res.status, res.statusText)
-        }
-      } catch (error) {
-        console.log(error)
-      }
-      console.log('createplaylist', this.user.playlist)
-    },
-
     async addSongToHistory(song) {
       var historyPlaylist = this.user.playlists.find(playlist => playlist.name === '最近听过')
       const existingIndex = historyPlaylist.songs.findIndex(item =>
