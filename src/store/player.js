@@ -204,6 +204,7 @@ export const usePlayerStore = defineStore('player', {
             console.log('Set Playlist', playlistName)
             const userStore = useUserStore()
             this.playlist = userStore.user.playlists.find(p => p.name === playlistName).songs
+            this.playlistName = playlistName
             this.currentIndex = 0
             this.currentSong = this.playlist[0]
             this.playSong(this.currentSong)
