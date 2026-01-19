@@ -11,7 +11,7 @@
     <!-- 操作按钮区域 -->
     <div class="actions-bar">
       <div class="action-buttons">
-        <button class="btn primary-btn">
+        <button class="btn primary-btn" @click.stop="playerStore.setPlaylist('我喜欢')">
           <span class="icon">▶</span> 播放全部
         </button>
         <button class="btn secondary-btn">

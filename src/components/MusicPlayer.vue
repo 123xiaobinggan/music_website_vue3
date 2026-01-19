@@ -130,7 +130,7 @@
     <!-- 展开的播放面板 -->
     <div v-if="isExpanded && playerStore.currentSong" class="expanded-player">
       <div class="expanded-header">
-        <h3>正在播放</h3>
+        <h3>{{ playerStore.playlistName }}</h3>
         <button @click="toggleExpanded" class="close-btn" title="收起">
           <i class="fas fa-chevron-down"></i>
         </button>
@@ -196,7 +196,9 @@
     <!-- 播放列表面板 -->
     <div v-if="showPlaylist" class="playlist-panel">
       <div class="playlist-header">
-        <h3>播放列表 ({{ playerStore.playlist.length }})</h3>
+        <h3>
+          {{ playerStore.playlistName }} ({{ playerStore.playlist.length }})
+        </h3>
         <div class="playlist-actions">
           <button @click="clearPlaylist" class="clear-btn" title="清空播放列表">
             <i class="fas fa-trash"></i> 清空
@@ -306,7 +308,7 @@ async function addSongToPlaylist(playlistName) {
     if (res.code === 0) {
       alert("添加成功");
       toggleAddToPlaylists();
-    }else{
+    } else {
       alert(res.msg);
     }
   } catch (err) {

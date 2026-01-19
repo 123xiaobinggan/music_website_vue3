@@ -11,6 +11,7 @@ export const usePlayerStore = defineStore('player', {
         volume: 0.7,
         currentTime: 0,
         duration: 0,
+        playlistName: '最近听过',
         playlist: [],
         nextSong: null,
         historyPlaylist: [],
@@ -25,6 +26,13 @@ export const usePlayerStore = defineStore('player', {
             'currentIndex',
             'volume',
             'playMode',
+            'historyPlaylist',
+            'nextSong',
+            'playlistName',
+            'duration',
+            'currentTime',
+            'isPlaying',
+            'audio'
         ]
     },
 
@@ -57,11 +65,7 @@ export const usePlayerStore = defineStore('player', {
 
         async playSong(song, index = null) {
             const userStore = useUserStore()
-            if (!(this.playlist.find(s => s.songKey === song.songKey))) {
-                console.log('添加歌曲到播放列表', song)
-                this.playlist.unshift(song)
-                userStore.addSongToHistory(song)
-            }
+            userStore.addSongToHistory(song)
             this.initAudio()
 
             this.currentSong = song
@@ -140,11 +144,11 @@ export const usePlayerStore = defineStore('player', {
         next() {
             if (this.playlist.length === 0) return
 
-            if(this.nextSong){
+            if (this.nextSong) {
                 this.currentSong = this.nextSong
                 this.nextSong = null;
                 this.playSong(this.currentSong)
-                if(this.historyPlaylist.length > 10){
+                if (this.historyPlaylist.length > 10) {
                     this.historyPlaylist.shift()
                 }
                 this.historyPlaylist.push(this.currentSong)
@@ -163,7 +167,7 @@ export const usePlayerStore = defineStore('player', {
             }
             this.currentIndex = nextIndex
             this.currentSong = this.playlist[nextIndex]
-            if(this.historyPlaylist.length > 10){
+            if (this.historyPlaylist.length > 10) {
                 this.historyPlaylist.shift()
             }
             this.historyPlaylist.push(this.currentSong)
@@ -174,7 +178,7 @@ export const usePlayerStore = defineStore('player', {
         prev() {
             if (this.playlist.length === 0) return
 
-            if(this.historyPlaylist.length > 0){
+            if (this.historyPlaylist.length > 0) {
                 this.currentSong = this.historyPlaylist.pop()
                 this.playSong(this.currentSong)
                 return;
@@ -196,12 +200,13 @@ export const usePlayerStore = defineStore('player', {
             this.playSong(this.currentSong)
         },
 
-        setPlaylist(songs, index = 0) {
-            this.playlist = songs
-            this.currentIndex = index
-            if (songs.length > 0) {
-                this.playSong(songs[index])
-            }
+        setPlaylist(playlistName) {
+            console.log('Set Playlist', playlistName)
+            const userStore = useUserStore()
+            this.playlist = userStore.user.playlists.find(p => p.name === playlistName).songs
+            this.currentIndex = 0
+            this.currentSong = this.playlist[0]
+            this.playSong(this.currentSong)
         },
 
         setSongAsNext(song) {

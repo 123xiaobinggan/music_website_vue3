@@ -47,7 +47,7 @@
                   <button
                     v-if="hoveredPlaylistId === playlist.name"
                     class="play-button"
-                    @click.stop="playPlaylist(playlist.name)"
+                    @click.stop="playerStore.setPlaylist(playlist.name)"
                   >
                     <i class="fas fa-play"></i>
                   </button>
@@ -132,11 +132,13 @@
 <script setup>
 import { defineOptions, onMounted } from "vue";
 import { useUserStore } from "../../../../store/user.js";
+import { usePlayerStore } from "../../../../store/player.js";
 import MessageBox from "../../../../components/MessageBox.vue";
 defineOptions({
   name: "MyPlaylistAllPage",
 });
 const userStore = useUserStore();
+const playerStore = usePlayerStore();
 import useMyPlaylist from "./Index.js";
 let {
   hoveredPlaylistId,

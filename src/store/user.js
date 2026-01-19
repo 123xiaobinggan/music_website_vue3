@@ -61,8 +61,6 @@ export const useUserStore = defineStore("user", {
 
       if (existingIndex === -1) {
         historyPlaylist.songs.unshift(song)
-
-
         try {
           await axios.post(this.url + "/Update_History_Listen", { accountId: this.user.accountId, song })
         } catch (error) {

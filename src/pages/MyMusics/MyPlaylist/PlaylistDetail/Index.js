@@ -6,6 +6,7 @@ import { useUserStore } from '@/store/user.js';
 
 export default function useMyPlaylistDetail() {
     const route = useRoute();
+    const router = useRouter();
     const playlistName = route.params.id;
     let isShowModal = ref(false);
     let newPlaylistName = ref(playlistName);
@@ -78,6 +79,12 @@ export default function useMyPlaylistDetail() {
                 console.log('更新成功')
                 isShowModal.value = false;
                 alert('更新成功');
+                if (newPlaylistName.value !== playlistName) {
+                    router.replace({
+                        name: 'detail',
+                        params: { id: newPlaylistName.value }
+                    });
+                }
             } else {
                 console.log(res.msg)
                 alert('更新失败');
@@ -138,13 +145,13 @@ export default function useMyPlaylistDetail() {
         const button = event.currentTarget;
         if (button) {
             const rect = button.getBoundingClientRect();
-            if(rect.top + rect.height > window.innerHeight / 2){
+            if (rect.top + rect.height > window.innerHeight / 2) {
                 dropdownDirection.value = 'top-right'
                 dropdownPosition.value = {
                     left: rect.left + rect.width,
                     top: rect.top
                 }
-            }else{
+            } else {
                 dropdownDirection.value = 'bottom-right'
                 dropdownPosition.value = {
                     left: rect.left + rect.width,
@@ -208,7 +215,7 @@ export default function useMyPlaylistDetail() {
         handleFileUpload,
         showPlaylistDropdown,
         hidePlaylistDropdown,
-        handleClickOutside
+        handleClickOutside,
     }
 }
 
