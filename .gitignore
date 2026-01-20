@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
 /dist
-
+./gitignore
+.eslintrc.cjs
 
 # local env files
 .env.local

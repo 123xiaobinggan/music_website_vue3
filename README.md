@@ -21,6 +21,9 @@
 ## 网站地址
 - http://120.48.156.237
 
+## 相关依赖
+- 相关依赖查看package.json
+
 ## Project setup
 ```
 npm install
