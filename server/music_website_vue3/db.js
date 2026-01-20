@@ -6,7 +6,7 @@ const pool = mysql.createPool({
   host: "127.0.0.1",      // 如果是服务器本机 mysql
   port: 3306,
   user: "music_user",
-  password: "Qinguanqiao1356",
+  password: "",
   database: "music_website_vue3",
   waitForConnections: true,
   connectionLimit: 10,    // 最大连接数
