@@ -6,8 +6,8 @@ const COS = require('cos-nodejs-sdk-v5');
 async function main(req, context) {
     const { accountId, filePath } = req.body;
     const cos = new COS({
-        SecretId:"AKIDjU9wWyEH7mIdmjV4SddAWiiYCi9RYTBg",
-        SecretKey: "SjrmnprjZIsGVXO1UlrjQwGTUIsENI2Y"
+        SecretId:"",
+        SecretKey: ""
     })
 
     if(!accountId || !filePath){
